@@ -4,13 +4,50 @@ import com.sparta.week2.memoIoCDI.dto.MemoRequestDto;
 import com.sparta.week2.memoIoCDI.dto.MemoResponseDto;
 import com.sparta.week2.memoIoCDI.entity.Memo;
 import com.sparta.week2.memoIoCDI.repository.MemoRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+// @RequiredArgsConstructor 어노테이션으로 생성자 주입을 할 수 있습니다.
+@Service
 public class MemoService {
 // MemoController -> MemoService -> MemoRepository 흐름
-    private final MemoRepository memoRepository;
 
+    /*
+    메소드 주입 방법
+    private MemoRepository memoRepository;
+
+    @Autowired // 이 어노테이션을 붙여줘야 Bean으로 등록됩니다.
+    public void setDi(MemoRepository memoRepository) {
+        this.memoRepository = memoRepository;
+    }
+     */
+
+    /*
+     주입받는 생성자에 원래 AutoWired 어노테이션을 붙여줘야 했지만
+     Spring에서 생성자 1개일 경우 생략해도 되게 업데이트 했습니다.
+     */
+
+    /*
+    private final MemoRepository memoRepository;
+    public MemoService(MemoRepository memoRepository) {
+        this.memoRepository = memoRepository;
+    }
+     */
+
+//    private final MemoRepository memoRepository;
+
+//    public MemoService (ApplicationContext context) {
+//        // 1. Bean 이름으로 가져오기
+//        // MemoRepository memoRepository = (MemoRepository) context.getBean("memoRepository");
+//        // MemoRepository 객체에 ApplcationContext를 이용하여 Bean으로 등록하겠다라는 의미입니다. MemoRepository로 캐스팅을 해줘야 합니다.
+//
+//        // 2. 클래스 형식으로 가져오기
+//        // MemoRepository memoRepository = context.getBean(MemoRepository.class);
+//        // this.memoRepository = memoRepository;
+//    }
+
+    private final MemoRepository memoRepository;
     public MemoService(MemoRepository memoRepository) {
         this.memoRepository = memoRepository;
     }

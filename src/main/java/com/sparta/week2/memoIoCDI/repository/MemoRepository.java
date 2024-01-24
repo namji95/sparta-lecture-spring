@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,10 +15,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+@Repository
 public class MemoRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
+    /*
+    주입하는 방법으로 필드 주입, 생성자 주입, 메소드 주입이 있지만 생성자 주입만 하는 이유는
+    객체의 불변성을 지켜줄 수 있기 때문에 생성자 주입을 선택했습니다.
+     */
     public MemoRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
