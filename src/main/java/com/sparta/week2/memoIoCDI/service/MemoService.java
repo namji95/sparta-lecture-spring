@@ -4,16 +4,15 @@ import com.sparta.week2.memoIoCDI.dto.MemoRequestDto;
 import com.sparta.week2.memoIoCDI.dto.MemoResponseDto;
 import com.sparta.week2.memoIoCDI.entity.Memo;
 import com.sparta.week2.memoIoCDI.repository.MemoRepository;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 
 public class MemoService {
-
+// MemoController -> MemoService -> MemoRepository 흐름
     private final MemoRepository memoRepository;
 
-    public MemoService(JdbcTemplate jdbcTemplate) {
-        this.memoRepository = new MemoRepository(jdbcTemplate);
+    public MemoService(MemoRepository memoRepository) {
+        this.memoRepository = memoRepository;
     }
 
     public MemoResponseDto createMemo(MemoRequestDto requestDto) {

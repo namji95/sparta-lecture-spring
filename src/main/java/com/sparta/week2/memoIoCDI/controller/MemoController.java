@@ -3,7 +3,7 @@ package com.sparta.week2.memoIoCDI.controller;
 import com.sparta.week2.memoIoCDI.dto.MemoRequestDto;
 import com.sparta.week2.memoIoCDI.dto.MemoResponseDto;
 import com.sparta.week2.memoIoCDI.service.MemoService;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,11 +11,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class MemoController {
-
+// MemoController -> MemoService -> MemoRepository 흐름
     private final MemoService memoService;
 
-    public MemoController(JdbcTemplate jdbcTemplate) {
-        this.memoService = new MemoService(jdbcTemplate);
+    public MemoController(MemoService memoService) {
+        this.memoService = memoService;
     }
 
     @PostMapping("/memos")
