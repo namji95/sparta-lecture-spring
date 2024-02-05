@@ -4,12 +4,11 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
 @Slf4j(topic = "LoggingFilter")
-@Component
+//@Component
 @Order(1) // filter가 chain형식이기 때문에 그래서 순서가 있는데 그 순서를 지정해주는 어노테이션
 public class LoggingFilter implements Filter {
     @Override
